@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无人机病害检测可视化</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>无人机病害检测可视化</h1>
+    <div class="status">
+      <span id="db-status" class="badge badge-warn">病害库检测中…</span>
+      <span id="ws-status" class="badge badge-warn">实时通道未连接</span>
+      <span id="fps-status" class="badge">预览 -- fps</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 左侧：实时视频流（非抽帧） -->
+    <section class="panel panel-left">
+      <div class="panel-head">
+        <h2>实时视频流</h2>
+        <div class="controls">
+          <input id="source-input" type="text" placeholder="rtsp:// 或 rtmp:// 视频源地址" spellcheck="false">
+          <input id="session-input" type="text" placeholder="会话 ID" spellcheck="false">
+          <button id="preview-btn" type="button">开始预览</button>
+          <button id="preview-stop-btn" type="button" class="ghost">停止</button>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <img id="preview-img" alt="实时视频流" hidden>
+        <div id="preview-placeholder" class="placeholder">
+          <p>尚未接入视频流</p>
+          <p class="hint">填写视频源地址与会话 ID 后点击「开始预览」</p>
+        </div>
+      </div>
+      <div class="panel-foot">
+        <span id="preview-info">预览未启动</span>
+      </div>
+    </section>
+
+    <!-- 右侧：上=准实时病害检测画面，下=历史病害数据 -->
+    <section class="panel panel-right">
+      <div class="panel-head">
+        <h2>病害检测画面</h2>
+        <span id="detect-info" class="muted">等待检测结果…</span>
+      </div>
+      <div class="detect-wrap">
+        <canvas id="detect-canvas"></canvas>
+        <div id="detect-placeholder" class="placeholder">
+          <p>暂无病害代表帧</p>
+          <p class="hint">检测到病害并完成去重与最优框选择后在此显示</p>
+        </div>
+      </div>
+
+      <div class="panel-head panel-head-sub">
+        <h2>历史病害数据</h2>
+        <div class="controls">
+          <select id="session-filter">
+            <option value="">全部会话</option>
+          </select>
+          <button id="refresh-btn" type="button" class="ghost">刷新</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="records-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>时间</th>
+              <th>病害类型</th>
+              <th>置信度</th>
+              <th>质量分</th>
+              <th>会话</th>
+              <th>描述</th>
+            </tr>
+          </thead>
+          <tbody id="records-body">
+            <tr><td colspan="7" class="empty">暂无数据</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-foot">
+        <span id="records-info">共 0 条</span>
+        <button id="load-more-btn" type="button" class="ghost" hidden>加载更多</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

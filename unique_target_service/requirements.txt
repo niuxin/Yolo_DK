@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2
+numpy>=1.26
+opencv-python>=4.10
+ultralytics>=8.4
+lap>=0.5.12

@@ -1,0 +1,44 @@
+# GPU 病害检测与跟踪服务
+api:
+  host: "0.0.0.0"
+  port: 8081
+  max_upload_mb: 10
+
+model:
+  # 部署时替换为病害检测模型权重，可使用绝对路径
+  weights: "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/weights/yolo11n.pt"
+  # Ultralytics 设备参数：GPU 填 "0"，CPU 填 "cpu"
+  device: "1"
+  image_size: 1280
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  # 留空表示接受模型全部类别；部署时建议明确填写病害类别
+  class_names: ['car', 'truck', 'bus', 'motorcycle', 'bicycle', 'person']
+
+# 每个 detector_id 可使用独立权重和推理参数。默认算法保持现有配置。
+models:
+  default: {}
+  house:
+    backend: house_tiled
+    weights: "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/weights/house_v3_recommended.pt"
+    device: "0"
+    image_size: 640
+    confidence_threshold: 0.4
+    iou_threshold: 0.45
+    class_names: ["house"]
+    tiled: true
+    tile_size: 1280
+    max_det: 300
+    nms_iou_threshold: 0.45
+  default:
+    weights: "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/weights/yolo11n.pt"
+    # Ultralytics 设备参数：GPU 填 "0"，CPU 填 "cpu"
+    device: "1"
+    image_size: 1280
+    confidence_threshold: 0.25
+    iou_threshold: 0.45
+    # 留空表示接受模型全部类别；部署时建议明确填写病害类别
+    class_names: ['car', 'truck', 'bus', 'motorcycle', 'bicycle', 'person']
+
+
+default_model_id: default

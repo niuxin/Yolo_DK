@@ -1,0 +1,7 @@
+.venv/
+weights/
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+stream_service/data/
+GitHub.md

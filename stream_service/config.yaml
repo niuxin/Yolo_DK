@@ -1,0 +1,66 @@
+# 无人机视频流服务
+stream:
+  # 任务启动请求会传入 stream_url；可留空以避免在配置中保存任务地址
+  source: ""
+  ffmpeg_path: "ffmpeg"
+  ffprobe_path: "ffprobe"
+  rtsp_transport: "tcp"
+  read_timeout_us: 10000000
+  # 每次流量探测最长等待时间；HLS 首个分片可能需 10 秒以上
+  probe_timeout_s: 20
+  # 未检测到流量或断流后的重试间隔
+  retry_interval_s: 5
+  # FFmpeg 输出的统一图像尺寸
+  width: 1280
+  height: 720
+  # 抽帧频率：FFmpeg 在管道前完成降采样，Python 只读取该帧率的图像
+  sample_fps: 5
+  jpeg_quality: 90
+  # RTMP 地址被服务端拒绝播放时，自动回退到同源 SRS HLS 地址
+  hls_fallback: true
+  # SRS 提供 HLS 的 HTTP 端口
+  hls_http_port: 8080
+
+disease_api:
+  # GPU 病害检测服务地址；在不同服务器部署时填写内网地址
+  base_url: "http://127.0.0.1:8081"
+  timeout_s: 10
+  # 上传给检测服务的 JPEG 质量
+  upload_jpeg_quality: 90
+
+unique_target_api:
+  # 关闭时按每帧、每个原始检测框分别入库
+  enabled: true
+  base_url: "http://127.0.0.1:8083"
+  timeout_s: 10
+
+storage:
+  # 图片和 SQLite 病害记录存储位置
+  image_dir: "data/images"
+  database_path: "data/disease.db"
+
+control_api:
+  host: "0.0.0.0"
+  port: 8082
+  max_concurrent_tasks: 4
+  task_history_limit: 1000
+
+vlm:
+  # 仅启用时调用独立 VLM 服务生成结构化病害描述。
+  enabled: true
+  base_url: "http://127.0.0.1:8084"
+  timeout_s: 60
+
+gateway:
+  # 凭据只从运行环境读取；不要写入 YAML 或请求日志。
+  callback_app_id_env: "LIVE_DETECTION_APP_ID"
+  callback_app_secret_env: "LIVE_DETECTION_APP_SECRET"
+  output_secret_env: "LIVE_OUTPUT_RTMP_SECRET"
+  # 正式部署填写业务回调主机白名单；空列表仅允许解析到私有地址的主机。
+  callback_allowed_hosts: []
+  # 生产媒体服务器主机白名单；空列表仅允许解析到私有地址的主机。
+  output_allowed_hosts: []
+  # 仅可信内网联调开启 HTTP；部署正式环境保持 false 并使用 HTTPS。
+  allow_insecure_http: false
+  callback_retry_attempts: 4
+  callback_retry_backoff_s: 1

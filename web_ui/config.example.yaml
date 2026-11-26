@@ -1,0 +1,37 @@
+# 无人机病害检测可视化界面服务（独立进程，默认端口 8085）
+# 使用方式：复制为 config.yaml 后按部署环境调整
+#   cp web_ui/config.example.yaml web_ui/config.yaml
+preview:
+  # 关闭后 /api/preview 返回 503，界面只显示检测结果和历史记录
+  enabled: true
+  ffmpeg_path: "ffmpeg"
+  rtsp_transport: "tcp"
+  read_timeout_us: 10000000
+  # 预览拉流断开后的重连间隔
+  retry_interval_s: 3
+  # 必须与 stream_service 的 width/height 一致，检测框才能 1:1 叠加
+  width: 1280
+  height: 720
+  # 预览帧率：不抽帧时填源帧率（如 25/30），界面按此帧率刷新
+  fps: 25
+  # FFmpeg -q:v，1 最好 31 最差
+  quality: 7
+
+storage:
+  # 直接复用 stream_service 的病害库和图片目录（只读）
+  image_dir: "../stream_service/data/images"
+  database_path: "../stream_service/data/disease.db"
+  # 轮询外部写入病害库的新记录的间隔（秒）
+  poll_interval_s: 1
+
+server:
+  host: "0.0.0.0"
+  port: 8085
+  page_size: 50
+  max_page_size: 200
+  # 每个 WebSocket 订阅者的有界队列长度，慢客户端会被丢弃最旧事件
+  event_queue_size: 256
+  # 病害记录推送节流：每 session 每秒最多推送条数
+  record_throttle_per_second: 4
+  # 界面默认预览的视频源；留空则需在页面上手动填写
+  default_source: ""

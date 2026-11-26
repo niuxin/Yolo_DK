@@ -1,0 +1,37 @@
+Creating new Ultralytics Settings v0.0.8 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/damx8z/liteng/HighwayDetection/DemoHouseDetect/deliverables/house_unique_service_v1/.cache/yolo/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart#ultralytics-settings.
+Physical GPU=2; model=/home/damx8z/liteng/HighwayDetection/DemoHouseDetect/deliverables/house_unique_service_v1/trained_model/house_v3_recommended.pt; outputs=/home/damx8z/liteng/HighwayDetection/DemoHouseDetect/deliverables/house_unique_service_v1/outputs
+INFO:     Started server process [812463]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:19081 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54560 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54562 - "POST /v2/runs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54570 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54572 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54596 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54598 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54602 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54608 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54624 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54638 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54640 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54642 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54658 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54670 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54682 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54690 - "POST /v2/detect HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "POST /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/close HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54708 - "GET /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/events/r9fe057fe43354e858a487ceff4ac9aa1_000002/files/original.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54720 - "GET /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/events/r9fe057fe43354e858a487ceff4ac9aa1_000002/files/annotated.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54736 - "GET /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/events/r9fe057fe43354e858a487ceff4ac9aa1_000002/files/bbox.txt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54744 - "GET /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/events/r9fe057fe43354e858a487ceff4ac9aa1_000002/files/bbox_yolo.txt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /v2/runs/9fe057fe43354e858a487ceff4ac9aa1/events/r9fe057fe43354e858a487ceff4ac9aa1_000002/files/metadata.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54756 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [812463]

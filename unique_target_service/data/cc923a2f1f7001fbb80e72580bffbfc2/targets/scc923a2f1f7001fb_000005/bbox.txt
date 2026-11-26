@@ -1,0 +1,2 @@
+class_id=0 class_name=house frame_id=447 confidence=0.914062
+xyxy_pixels=1066.000 515.000 1262.000 669.000

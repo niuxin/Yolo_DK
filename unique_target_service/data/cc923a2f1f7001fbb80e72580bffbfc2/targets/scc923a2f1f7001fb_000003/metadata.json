@@ -1,0 +1,46 @@
+{
+  "frame_id": 431,
+  "timestamp_ms": 86200.0,
+  "bbox_xyxy": [
+    1041.0,
+    273.75,
+    1221.0,
+    483.75
+  ],
+  "confidence": 0.87060546875,
+  "quality": {
+    "score": 0.8269813222249519,
+    "sharpness": 329.0081394025923,
+    "exposure": 0.9999470899470899,
+    "centrality": 0.3308376953899905,
+    "border_complete": true,
+    "eligible": true
+  },
+  "target_id": "scc923a2f1f7001fb_000003",
+  "stream_id": "scc923a2f1f7001fb",
+  "class_id": 0,
+  "class_name": "house",
+  "confirmed_frame_id": 432,
+  "confirmed_timestamp_ms": 86400.0,
+  "first_seen_frame_id": 421,
+  "first_high_timestamp_ms": 84200.0,
+  "confirmation_latency_ms": 2200.0,
+  "evidence_frames": [
+    428,
+    429,
+    430,
+    431,
+    432
+  ],
+  "relinks": 0,
+  "stationary_evidence": 8,
+  "image_width": 1280,
+  "image_height": 720,
+  "bbox_format": "xyxy in original image pixels",
+  "frame_id_base": 0,
+  "files": {
+    "original": "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/unique_target_service/data/cc923a2f1f7001fbb80e72580bffbfc2/targets/scc923a2f1f7001fb_000003/original.jpg",
+    "annotated": "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/unique_target_service/data/cc923a2f1f7001fbb80e72580bffbfc2/targets/scc923a2f1f7001fb_000003/annotated.jpg",
+    "bbox": "/home/damx8z/niuxin/PythonProject/Test_WRJ/code/unique_target_service/data/cc923a2f1f7001fbb80e72580bffbfc2/targets/scc923a2f1f7001fb_000003/bbox.txt"
+  }
+}
